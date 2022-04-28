@@ -114,8 +114,8 @@ def getshift():
 
 def on_connect(client, userdata, flags, rc):  
     global resetTopic,configTopic,spaceTopic
-    client.subscribe(resetTopic)
-    client.subscribe(configTopic)
+    # client.subscribe(resetTopic)
+    # client.subscribe(configTopic)
     client.subscribe(spaceTopic)
     print("Connected with result code " + str(rc))
 
