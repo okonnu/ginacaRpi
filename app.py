@@ -120,7 +120,7 @@ def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
 
 def on_message(client, userdata, msg):  # The callback for when a PUBLISH message is received from the server.
-    global cnt1,resetTopic,canspercase,team,spaceTopic,eff,avgLength,downtime
+    global resetTopic,team,spaceTopic,eff,avgLength,downtime
     print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
         
     if msg.topic == resetTopic:
@@ -180,13 +180,17 @@ def sendcans():
 
 
 set_pyconfigs(client_id, team, canspercase, target)
-sendcans()
+
 
 print("counter1 : " + os.getenv('COUNTER1_STATUS') + " counter2 : " + os.getenv('COUNTER2_STATUS'))
+print(spaceTopic)
 
 if os.getenv('COUNTER1_STATUS') == "ENABLED":
     countcans1()
 if os.getenv('COUNTER2_STATUS') == "ENABLED":
     countcans2()
+    
+if os.getenv('COUNTER2_STATUS') == "ENABLED" or os.getenv('COUNTER1_STATUS') == "ENABLED":
+    sendcans()  
 
 eel.start('index.html', host='localhost', port=27011, size=(1280,960), position=(0,0), cmdline_args=['--disable-infobars','--start-fullscreen'] )
