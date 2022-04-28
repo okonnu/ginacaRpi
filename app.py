@@ -116,6 +116,7 @@ def on_connect(client, userdata, flags, rc):
     global resetTopic,configTopic
     client.subscribe(resetTopic)
     client.subscribe(configTopic)
+    client.subscribe(spaceTopic)
 
 def on_message(client, userdata, msg):  # The callback for when a PUBLISH message is received from the server.
     global cnt1,resetTopic,canspercase,team,spaceTopic,eff,avgLength,downtime
