@@ -71,7 +71,7 @@ setpinmode(counter2, os.getenv('COUNTER2_MODE') )
 @eel.expose
 def set_pyconfigs(jclient_id, jteam, jcanspercase, jtarget):
     
-    print("Initializing with system defaults ...")
+    print("setting system defaults ...")
     eel.set_jsconfigs(jclient_id, jteam, jcanspercase, jtarget, getshift())
     print(getshift())
  
@@ -113,10 +113,11 @@ def getshift():
 
 
 def on_connect(client, userdata, flags, rc):  
-    global resetTopic,configTopic
+    global resetTopic,configTopic,spaceTopic
     client.subscribe(resetTopic)
     client.subscribe(configTopic)
     client.subscribe(spaceTopic)
+    print("Connected with result code " + str(rc))
 
 def on_message(client, userdata, msg):  # The callback for when a PUBLISH message is received from the server.
     global cnt1,resetTopic,canspercase,team,spaceTopic,eff,avgLength,downtime
@@ -148,7 +149,6 @@ client.on_message = on_message  # Define callback function for receipt of a mess
 username = os.getenv('MQTT_USER')
 password = os.getenv('MQTT_PASS')
 client.username_pw_set(username, password)
-print(os.getenv('MQTT_PORT'))
 client.connect(os.getenv('MQTT_SERVER'))
 client.loop_start()  #Start loop
 
@@ -181,6 +181,8 @@ def sendcans():
 
 set_pyconfigs(client_id, team, canspercase, target)
 sendcans()
+
+print("counter1 : " + os.getenv('COUNTER1_STATUS') + " counter2 : " + os.getenv('COUNTER2_STATUS'))
 
 if os.getenv('COUNTER1_STATUS') == "ENABLED":
     countcans1()
