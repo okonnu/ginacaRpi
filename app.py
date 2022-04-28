@@ -139,7 +139,7 @@ def on_message(client, userdata, msg):  # The callback for when a PUBLISH messag
             eel.set_eff(eff)
             
 
-client = mqtt.Client(os.getenv('CLIENT_ID'))  # Create instance of client with client ID “digi_mqtt_test”
+client = mqtt.Client(os.getenv('CLIENT_ID'))  # 
 client.on_connect = on_connect  # Define callback function for successful connection
 client.on_message = on_message  # Define callback function for receipt of a message
 username = os.getenv('MQTT_USER')
