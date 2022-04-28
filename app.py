@@ -138,8 +138,6 @@ def on_message(client, userdata, msg):  # The callback for when a PUBLISH messag
             eel.set_metrics(fruitLength, avgLength, downtime, fruitCount)
             eel.set_eff(eff)
             
-        
-        print(cnt1)
 
 client = mqtt.Client(os.getenv('CLIENT_ID'))  # Create instance of client with client ID “digi_mqtt_test”
 client.on_connect = on_connect  # Define callback function for successful connection
