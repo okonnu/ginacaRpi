@@ -126,13 +126,10 @@ function set_eff(effic) {
 
 eel.expose(set_metrics);
 
-function set_metrics(fruitLength, s_cases, avgLength, downtime, fruitCount) {
+function set_metrics(fruitLength, avgLength, downtime, fruitCount) {
 
     //seamed cans
     document.getElementById("fruitLength").textContent = fruitLength
-
-    //seamed cases 
-    document.getElementById("s_cases").textContent = s_cases
 
     //damaged cans
     document.getElementById("avgLength").textContent = avgLength

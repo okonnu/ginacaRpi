@@ -29,6 +29,7 @@ username = os.getenv('MQTT_USER')
 password = os.getenv('MQTT_PASS')
 resetTopic = os.getenv('RESET_TOPIC')
 configTopic = os.getenv('CONFIG_TOPIC')
+spaceTopic = os.getenv('SPACE_TOPIC')
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
@@ -117,7 +118,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe(configTopic)
 
 def on_message(client, userdata, msg):  # The callback for when a PUBLISH message is received from the server.
-    global cnt1,resetTopic,canspercase,team
+    global cnt1,resetTopic,canspercase,team,spaceTopic,eff,avgLength,downtime
     if msg.topic == resetTopic:
         print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
         restart()
@@ -128,8 +129,16 @@ def on_message(client, userdata, msg):  # The callback for when a PUBLISH messag
     if msg.topic == spaceTopic:
         print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
         data = json.loads(msg.payload)
-        cnt1 = int(data["receivedcans"])
-        team = data["team"]
+        if data["clientID"] == client_id:
+            fruitCount = int(data["fruitCount"])
+            fruitLength = int(data["fruitLength"])
+            eff = int(data["efficiency"])
+            avgLength = int(data["averageFruitLength"])
+            downtime = int(data["downtime"])
+            eel.set_metrics(fruitLength, avgLength, downtime, fruitCount)
+            eel.set_eff(eff)
+            
+        
         print(cnt1)
 
 client = mqtt.Client(os.getenv('CLIENT_ID'))  # Create instance of client with client ID “digi_mqtt_test”
