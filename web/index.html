@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELMONTE KENYA</title>
+    <link rel="stylesheet" href="bootstrap431/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+
+<body style="padding-left:2.5%; padding-right:2%; padding-top:.7%">
+    <div>
+        <div>
+            <ul class="nav nav-pills justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link disabled" data-toggle="pill" href="#" role="tab" style="color:white; padding-right: 190px;">GINACA <span id="client_id"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="actv" data-toggle="pill" href="#statistics" role="tab" aria-controls="pills-flamingo" aria-selected="true">Metrics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#settings" role="tab" aria-controls="pills-cuckoo" aria-selected="false" onclick="openmodal()">Settings</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-3">
+                <div class="tab-pane" id="statistics" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row" style="padding-left:2.5%; padding-right:2%;">
+                        <div class="col">
+                            <div class="row">
+                                <div class="card" style="width:15rem; height:auto">
+                                    <img src="images/pineapple.png" class="card-img-top " alt="...">
+                                    <div class="card-body">
+                                        <h3 class="card-title" id="fruitCount">0</h3>
+                                        <p class="card-text">Fruit Count</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="card" style="width: 15rem; height:auto">
+                                    <img src="images/pineapple_length_orange.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h3 class="card-title" id="avgLength">000000</h3>
+                                        <p class="card-text">Average Lenth</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="card" style="width: 15rem; height:auto">
+                                    <img src="images/clock-time-eight.svg" class="card-img-top svg_purple" alt="...">
+                                    <div class="card-body">
+                                        <h3 class="card-title" id="shift">-</h3>
+                                        <p class="card-text">CURRENT SHIFT</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="card" style="width: 15rem; height:auto">
+                                    <img src="images/pineapple_length_orange.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h3 class="card-title" id="fruitLength">0</h3>
+                                        <p class="card-text">Fruit Lenth</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="card" style="width: 15rem; height:auto">
+                                    <img src="images/account-multiple-check-outline.svg" class="card-img-top svg_purple" alt="...">
+                                    <div class="card-body">
+                                        <h3 class="card-title" id="team">0</h3>
+                                        <p class="card-text">Team</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="card" style="width: 15rem; height:auto">
+                                    <img src="images/sort-clock-ascending.svg" class="card-img-top svg_red" alt="...">
+                                    <div class="card-body">
+                                        <h3 class="card-title" id="downtime">00</h3>
+                                        <p class="card-text">DOWNTIME MINS</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="canvas-con">
+                                <div class="canvas-con-inner">
+                                    <canvas id="mychart" height="300px"></canvas>
+                                </div>
+                                <div id="my-legend-con" class="legend-con"></div>
+                            </div>
+                            <br>
+                            <div style="text-align: center; color: white;">
+                                <h1 id="efficiency">
+                                    30%
+                                </h1>
+                                <h6>
+                                    EFFICIENCY
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="profile-tab">
+
+                    <form>
+                        <!-- <div class="form-group">
+                            <label for="exampleInputEmail1">Seamer Identification Name</label>
+                            <select class="form-control" name="client_id" id="fclient_id">
+                            <option value="s1">seamer 1</option>
+                            <option value="s2">seamer 2</option>
+                            <option value="s3">seamer 3</option>
+                            <option value="s4">seamer 4</option>
+                            <option value="s5">seamer 5</option>
+                            <option value="s6">seamer 6</option>
+                            <option value="s7">seamer 7</option>
+                            <option value="s8">seamer 8</option>
+                            <option value="s9">seamer 9</option>
+                            <option value="s10">seamer 10</option>
+                            <option value="s11">seamer 11</option>
+                          </select>
+                           
+                            + Idle time (Ginaca is on but no fruit is detected)
+                        </div> -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Select Team Working on Current Shift</label>
+                            <select class="form-control" name="team" id="fteam">
+                            <option>Group A</option>
+                            <option>Group B</option>
+                            <option>Group C</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tim">Select Can type being processed</label>
+                            <select class="form-control" name="canspercase" id="fcanspercase">
+                            <option value="6">A10</option>
+                            <option value="24">SA2</option>
+                            <option value="24">A2.5</option>
+                            <option value="24">2TALL</option>
+                            <option value="48">NIF / FLAT</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ftarget">Machine Target / Cycletime: <span id="rangee" style="font-size:26px; color: white;"></span> cans/min</label>
+                            <input type="range" max="350" min="50" class="form-control-range" id="ftarget" oninput="updatetarget()">
+                        </div>
+                        <a href="#" class="btn btn-primary" id="submit">SAVE SETTINGS AND <b>RUN SHIFT</b></a>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" id="passwordmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="container">
+                    <h3>Attention!</h3>
+
+                    <p>Proceed with caution. The settings in this section affects the accuracy of information being collected from this seamer.</p>
+                    <ol>
+                        <li>Carefully select the right seamer number</li>
+                        <li>Then choose the current team working on this shift</li>
+                        <li>Then choose the cantype currently being seamed</li>
+                        <li>Finally set the machine Target by moving the slider</li>
+                        <li>Click on save settings. THIS WILL RESET THE DEVICE SO THAT IT CAN START COLLECTING DATA FOR THE SHIFT</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="bootstrap431/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/chart.min.js"></script>
+
+<script src="js/main.js"></script>
+
+</html>

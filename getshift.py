@@ -8,4 +8,6 @@ def getshift():
     if  int(now.hour)  in (22,23,0,1,2,3,4,5) :
         return 'shift3'
     
+print(getshift())
+print(now.hour)
     
