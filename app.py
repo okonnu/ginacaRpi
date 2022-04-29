@@ -118,8 +118,9 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe(resetTopic)
     client.subscribe(configTopic)
     client.subscribe(spaceTopic)
-    print("Connected with result code " + str(rc))
-
+    if rc !=0:
+        print("Unable to connect error code: " + str(rc))
+        
 def on_message(client, userdata, msg):  # The callback for when a PUBLISH message is received from the server.
     global resetTopic,team,spaceTopic,eff,avgLength,downtime
     if msg.topic == resetTopic:
