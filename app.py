@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 from resetRpi import restart
 from cleanchrome import cleanchrome
 import json
+from probeLight import probeLight
 
 cleanchrome()
 eel.init('web')
@@ -139,6 +140,8 @@ def on_message(client, userdata, msg):  # The callback for when a PUBLISH messag
             downtime = int(data["downtime"])
             eel.set_metrics(fruitLength, avgLength, downtime, fruitCount)
             eel.set_eff(eff)
+            probeLight(eff)
+            
             
 
 client = mqtt.Client(client_id)  # 
@@ -173,6 +176,7 @@ def sendcans():
         eque.pop(0)
     eff = round((sum(eque)*12 / target)*100, 1)
     eel.set_eff(eff)
+    probeLight(eff)
     publish()
     tstamp = tstamp + 1
 
