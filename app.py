@@ -130,7 +130,6 @@ def on_message(client, userdata, msg):  # The callback for when a PUBLISH messag
         data = json.loads(msg.payload)
         team = data["team"]
     if msg.topic == spaceTopic:
-        print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
         data = json.loads(msg.payload)
         if data["clientID"] == client_id:
             fruitCount = int(data["fruitCount"])
