@@ -121,8 +121,6 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):  # The callback for when a PUBLISH message is received from the server.
     global resetTopic,team,spaceTopic,eff,avgLength,downtime
-    print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
-        
     if msg.topic == resetTopic:
         print("Message received-> " + msg.topic + " " + str(msg.payload))  # Print a received msg
         restart()
@@ -135,7 +133,7 @@ def on_message(client, userdata, msg):  # The callback for when a PUBLISH messag
         data = json.loads(msg.payload)
         if data["clientID"] == client_id:
             fruitCount = int(data["fruitCount"])
-            fruitLength = int(data["fruitLength"])
+            fruitLength = int(data["totalFruitLength"])
             eff = int(data["efficiency"])
             avgLength = int(data["averageFruitLength"])
             downtime = int(data["downtime"])
