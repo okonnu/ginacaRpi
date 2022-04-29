@@ -191,4 +191,4 @@ if os.getenv('COUNTER2_STATUS') == "ENABLED":
 if os.getenv('COUNTER2_STATUS') == "ENABLED" or os.getenv('COUNTER1_STATUS') == "ENABLED":
     sendcans()  
 
-# eel.start('index.html', host='localhost', port=27011, size=(1280,960), position=(0,0), cmdline_args=['--disable-infobars','--start-fullscreen'] )
+eel.start('index.html', host='localhost', port=27011, size=(1280,960), position=(0,0), cmdline_args=['--disable-infobars','--start-fullscreen'] )
